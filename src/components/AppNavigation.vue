@@ -1,9 +1,18 @@
 <template>
-  <v-card>
-    <v-toolbar dense>
+  <v-toolbar flat dense>
+    <router-link class="toolbar-title" to="/">
       <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
-    </v-toolbar>
-  </v-card>
+    </router-link>
+    <v-spacer></v-spacer>
+    <v-btn to="/about" text>About</v-btn>
+    <v-btn
+      icon
+      href="https://github.com/sroertgen/oer-metadata-editor"
+      target="_blank"
+    >
+      <v-icon>mdi-github</v-icon>
+    </v-btn>
+  </v-toolbar>
 </template>
 
 <script>
@@ -17,4 +26,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.toolbar-title {
+  color: inherit;
+  text-decoration: inherit;
+}
+</style>
