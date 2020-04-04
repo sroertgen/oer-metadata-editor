@@ -6,10 +6,10 @@
 
     <v-row>
       <v-col>
-      <v-switch
-      label="Alle Felder anzeigen"
-      v-model="bShowExtendedView"
-      ></v-switch>
+        <v-switch
+          label="Alle Felder anzeigen"
+          v-model="bShowExtendedView"
+        ></v-switch>
       </v-col>
     </v-row>
 
@@ -20,9 +20,11 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.name.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.name }}
+                {{ popover.name.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
@@ -31,68 +33,88 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.about.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.about }}
+                {{ popover.about.definition }}
               </v-tooltip>
             </template>
           </v-textarea>
 
-          <v-menu
-            ref="menu"
-            :close-on-content-click="false"
-            :nudge-right="40"
-            transition="scale-transition"
-            offset-y
-            min-width="290px"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
+          <div class="pl-2">
+            <v-menu
+              ref="menu"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              transition="scale-transition"
+              offset-y
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="entry.dateCreated"
+                  label="Wann wurde das Material erstellt?"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker
                 v-model="entry.dateCreated"
-                label="Wann wurde das Material erstellt?"
-                prepend-icon="mdi-calendar"
-                readonly
-                v-on="on"
-              ></v-text-field>
-            </template>
-            <v-date-picker v-model="entry.dateCreated" @input="menu = false"></v-date-picker>
-          </v-menu>
-
+                @input="menu = false"
+              ></v-date-picker>
+            </v-menu>
+          </div>
           <!-- Autorin -->
 
           <v-text-field label="Autor:in" v-model="entry.author">
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.author.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.author }}
+                {{ popover.author.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
 
           <!-- Publisher -->
 
-          <v-text-field v-if="bShowExtendedView" label="Herausgeber:in" v-model="entry.publisher">
+          <v-text-field
+            v-if="bShowExtendedView"
+            label="Herausgeber:in"
+            v-model="entry.publisher"
+          >
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.publisher.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.publisher }}
+                {{ popover.publisher.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
 
           <!-- inLanguage -->
 
-          <v-text-field v-if="bShowExtendedView" label="Sprache" v-model="entry.inLanguage">
+          <v-text-field
+            v-if="bShowExtendedView"
+            label="Sprache"
+            v-model="entry.inLanguage"
+          >
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.inLanguage.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.inLanguage }}
+                {{ popover.inLanguage.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
@@ -112,9 +134,15 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.accessibilityAPI.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.accessibilityAPI }}
+                {{ popover.accessibilityAPI.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -134,9 +162,15 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.accessibilityControl.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.accessibilityControl }}
+                {{ popover.accessibilityControl.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -156,9 +190,15 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.accessibilityFeature.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.accessibilityFeature }}
+                {{ popover.accessibilityFeature.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -178,9 +218,15 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.accessibilityHazard.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.accessibilityHazard }}
+                {{ popover.accessibilityHazard.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -191,9 +237,11 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.url.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.url }}
+                {{ popover.url.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
@@ -210,9 +258,11 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.license.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.license }}
+                {{ popover.license.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -225,9 +275,15 @@
                 <span>
                   <v-tooltip right :max-width="toolTipMaxWidth">
                     <template v-slot:activator="{ on }">
-                      <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                      <v-btn
+                        icon
+                        :href="popover.educationalFramework.link"
+                        target="_blank"
+                      >
+                        <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                      </v-btn>
                     </template>
-                    {{ popover.educationalFramework }}
+                    {{ popover.educationalFramework.definition }}
                   </v-tooltip>
                   Rahmenlehrpläne einblenden
                 </span>
@@ -287,9 +343,15 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.learningResourceType.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.learningResourceType }}
+                {{ popover.learningResourceType.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -303,9 +365,11 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.timeRequired.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.timeRequired }}
+                {{ popover.timeRequired.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
@@ -322,11 +386,17 @@
             clearable
           >
             <template v-slot:prepend>
-              <v-tooltip right>
+              <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.educationalRole.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.educationalRole }}
+                {{ popover.educationalRole.definition }}
               </v-tooltip>
             </template>
           </v-select>
@@ -344,14 +414,20 @@
             clearable
           >
             <template v-slot:prepend>
-              <v-tooltip right>
+              <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.educationalUse.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.educationalUse }}
+                {{ popover.educationalUse.definition }}
               </v-tooltip>
             </template>
-          </v-select> 
+          </v-select>
 
           <!-- typicalAgeRange -->
 
@@ -363,13 +439,18 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.typicalAgeRange.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.typicalAgeRange }}
+                {{ popover.typicalAgeRange.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
-
 
           <!-- interactivityType -->
 
@@ -384,24 +465,35 @@
             clearable
           >
             <template v-slot:prepend>
-              <v-tooltip right>
+              <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn
+                    icon
+                    :href="popover.interactivityType.link"
+                    target="_blank"
+                  >
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.interactivityType }}
+                {{ popover.interactivityType.definition }}
               </v-tooltip>
             </template>
           </v-select> 
 
           <!-- isBasedOnURL -->
 
-          <v-text-field label="Basiert auf der Ressource unter URL:" v-model="entry.isBasedOnUrl">
+          <v-text-field
+            label="Basiert auf der Ressource unter URL:"
+            v-model="entry.isBasedOnUrl"
+          >
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  <v-btn icon :href="popover.isBasedOnUrl.link" target="_blank">
+                    <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                  </v-btn>
                 </template>
-                {{ popover.isBasedOnUrl }}
+                {{ popover.isBasedOnUrl.definition }}
               </v-tooltip>
             </template>
           </v-text-field>
@@ -471,21 +563,15 @@
 
     <v-row align="center" justify="center">
       <v-col>
-        <v-card>
-          <v-btn @click="logEntry">Log Entry</v-btn>
-        </v-card>
+        <v-btn @click="logEntry">Log Entry</v-btn>
       </v-col>
       <v-spacer></v-spacer>
       <v-col>
-        <v-card>
-          <v-btn @click="buildJsonLd">Build JSON-LD</v-btn>
-        </v-card>
+        <v-btn @click="buildJsonLd">Build JSON-LD</v-btn>
       </v-col>
       <v-spacer></v-spacer>
       <v-col>
-        <v-card>
-          <v-btn @click="passToIndex(esData)">Pass to Index</v-btn>
-        </v-card>
+        <v-btn @click="passToIndex(esData)">Pass to Index</v-btn>
       </v-col>
     </v-row>
 
@@ -524,7 +610,7 @@ export default {
       },
       entry: {
         name: null,
-        about: null,
+        about: '',
         dateCreated: null,
         author: null,
         publisher: null,
@@ -556,52 +642,57 @@ export default {
         date_scraped: null
       },
       popover: {
-        name:
-          '<span>Ein eindeutiger Name, um das Material aufzufinden. <br> <a target="_blank" href="https://schema.org/name">Definition </a> auf Schema.org</span>',
-        about:
-          'Eine Beschreibung, die den Menschen hilft, den Zweck des Materials zu verstehen. <br> <a target="_blank" href="https://schema.org/about">Definition </a> auf Schema.org',
-        author:
-          'Name der Person oder Organisation, die das Material erstellt hat. <br> <a target="_blank" href="https://schema.org/author">Definition </a> auf Schema.org',
-        publisher:
-          'Name der Person oder Organisation, die das Material herausgegeben hat. <br> <a target="_blank" href="https://schema.org/publisher">Definition </a> auf Schema.org',
-        inLanguage:
-          'Die Sprache in der das Material verfasst ist. <br> <a target="_blank" href="https://schema.org/inLanguage">Definition </a> auf Schema.org',
-        accessibilityAPI:
-          'Indicates that the resource is compatible with the referenced accessibility API. <br> <a target="_blank" href="https://schema.org/accessibilityAPI">Definition </a> auf Schema.org',
-        accessibilityControl:
-          'Identifies input methods that are sufficient to fully control the described resource. <br> <a target="_blank" href="https://schema.org/accessibilityControl">Definition </a> auf Schema.org',
-        accessibilityFeature:
-          'Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility. <br> <a target="_blank" href="https://schema.org/accessibilityFeature">Definition </a> auf Schema.org',
-        license: 'Bitte eine Lizenz auswählen',
-        accessibilityHazard:
-          'A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3. <br> <a target="_blank" href="https://schema.org/accessibilityHazard">Definition </a> auf Schema.org',
-        timeRequired:
-          'Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience. <br> <a target="_blank" href="https://schema.org/timeRequired">Definition </a> auf Schema.org',
-        educationalRole:
-          'The role that describes the target audience of the content. Note: schema.org/EducationalAudience is a subtype of Schema.org/Audience. <br> <a target="_blank" href="https://schema.org/educationalRole">Definition </a> auf Schema.org <br> <a target="_blank" href="https://www.dublincore.org/specifications/lrmi/concept_schemes/#educational-audience-role" >Definition</a> des Vokabulars. ',
-        educationalAlignment:
-          'An alignment to an established educational framework. <br> <a target="_blank" href="https://schema.org/educationalAlignment">Definition </a> auf Schema.org',
-        alignmentType:
-          'A category of alignment between the learning resource and the framework node. Recommended values include: "assesses", "teaches", "requires", "textComplexity", "readingLevel", "educationalSubject", and "educationalLevel". <br> <a target="_blank" href="https://schema.org/educationalAlignment">Definition </a> auf Schema.org',
-        educationalFramework:
-          'The framework to which the resource being described is aligned. <br> <a target="_blank" href="https://schema.org/educationalFramework">Definition </a> auf Schema.org',
-        targetDescription:
-          'The description of a node in an established educational framework. <br> <a target="_blank" href="https://schema.org/targetDescription">Definition </a> auf Schema.org',
-        targetName:
-          'The name of a node in an established educational framework. <br> <a target="_blank" href="https://schema.org/targetName">Definition </a> auf Schema.org',
-        targetURL:
-          'The URL of a node in an established educational framework. <br> <a target="_blank" href="https://schema.org/targetURL">Definition </a> auf Schema.org',
-        educationalUse:
-          'The purpose of a work in the context of education; for example, "assignment", "group work". <br> <a target="_blank" href="https://schema.org/educationalUse">Definition </a> auf Schema.org',
-        typicalAgeRange:
-          'The typical expected age range, e.g. "7-9", "11-". <br> <a target="_blank" href="https://schema.org/typicalAgeRange">Definition </a> auf Schema.org',
-        interactivityType:
-          'The predominant mode of learning supported by the learning resource. Acceptable values are "active", "expositive", or "mixed". <br> <a target="_blank" href="https://schema.org/interactivityType">Definition </a> auf Schema.org',
-        learningResourceType:
-          'The predominant type or kind characterizing the learning resource. For example, "presentation", "handout". <br> <a target="_blank" href="https://schema.org/learningResourceType">Definition </a> auf Schema.org',
-        isBasedOnUrl:
-          'A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html. <br> <a target="_blank" href="https://schema.org/isBasedOnUrl">Definition </a> auf Schema.org',
-        url: 'A link to the resource.'
+        name: {
+          definition: 'Ein eindeutiger Name, um das Material aufzufinden.', link: 'https://schema.org/name'},
+        about: {
+          definition: 'Eine Beschreibung, die den Menschen hilft, den Zweck des Materials zu verstehen.', link: 'https://schema.org/about'},
+        author: {
+          definition: 'Name der Person oder Organisation, die das Material erstellt hat.', link: 'https://schema.org/author'},
+        publisher: {
+          definition: 'Name der Person oder Organisation, die das Material herausgegeben hat.', link: 'https://schema.org/publisher'},
+        inLanguage: {
+          definition: 'Die Sprache in der das Material verfasst ist.', link: 'https://schema.org/inLanguage'},
+        accessibilityAPI: {
+          definition: 'Indicates that the resource is compatible with the referenced accessibility API.', link: 'https://schema.org/accessibilityAPI'},
+        accessibilityControl: {
+          definition: 'Identifies input methods that are sufficient to fully control the described resource.', link: 'https://schema.org/accessibilityControl'},
+        accessibilityFeature: {
+          definition: 'Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility.', link: 'https://schema.org/accessibilityFeature'},
+        license: {
+          definition: 'Bitte eine Lizenz auswählen', link: 'https://schema.org/license'},
+        accessibilityHazard: {
+          definition: 'A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3.', link: 'https://schema.org/accessibilityHazard'},
+        timeRequired: {
+          definition: 'Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience.', link: 'https://schema.org/timeRequired'},
+        educationalRole: {
+          definition: 'The role that describes the target audience of the content. Note: schema.org/EducationalAudience is a subtype of Schema.org/Audience.', link: 'https://schema.org/educationalRole'},
+        educationalAlignment: {
+          definition: 'An alignment to an established educational framework.', link: 'https://schema.org/educationalAlignment'},
+        alignmentType: {
+          definition: 'A category of alignment between the learning resource and the framework node. Recommended values include: "assesses", "teaches", "requires", "textComplexity", "readingLevel", "educationalSubject", and "educationalLevel".', link: 'https://schema.org/educationalAlignment'},
+        educationalFramework: {
+          definition: 'The framework to which the resource being described is aligned.', link: 'https://schema.org/educationalFramework'},
+        targetDescription: {
+          definition: 'The description of a node in an established educational framework.', link: 'https://schema.org/targetDescription'},
+        targetName: {
+          definition: 'The name of a node in an established educational framework.', link: 'https://schema.org/targetName'},
+        targetURL: {
+          definition: 'The URL of a node in an established educational framework.', link: 'https://schema.org/targetURL'},
+        educationalUse: {
+          definition: 'The purpose of a work in the context of education; for example, "assignment", "group work".', link: 'https://schema.org/educationalUse'},
+        typicalAgeRange: {
+          definition: 'The typical expected age range, e.g. "7-9", "11-".', link: 'https://schema.org/typicalAgeRange'},
+        interactivityType:{
+          definition: 'The predominant mode of learning supported by the learning resource. Acceptable values are "active", "expositive", or "mixed".', link: 'https://schema.org/interactivityType'},
+        learningResourceType:{
+          definition: 'The predominant type or kind characterizing the learning resource. For example, "presentation", "handout".', link: 'https://schema.org/learningResourceType'},
+        isBasedOnUrl: {
+          definition:
+            'A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.',
+          link: 'https://schema.org/isBasedOnUrl'
+        },
+        url: {
+          definition: 'A link to the resource.', link: 'https://schema.org/url'}
       },
       authorizationOptions: [
         'Authorization-Header',
@@ -697,35 +788,50 @@ export default {
     },
     buildString(selected, isCompetence = 0) {
       var input_string = '"null"';
-      if (selected == null) {
+      if (selected == null && isCompetence == 0) {
         return input_string;
-      } else if (selected.length == 0) {
+      } else if (selected.length == 0 && isCompetence == 0) {
         return input_string;
       } else if (selected.length == 1 && isCompetence == 0) {
         input_string = '"' + selected + '"';
         return input_string;
       // we get selected Competencies passed
+      } else if (selected.length == 0 && isCompetence == 1) {
+        input_string = '"null",';
+        return input_string;
       } else if (selected.length >= 1 && isCompetence == 1) {
-        input_string = '\t';
+        input_string = '[ \t';
         selected.forEach(e => {
           const strType = '\n \t { \n \t \t "@type": "AlignmentObject", \n \t';
-          const strAlignmentType = '\t "alignmentType": "' + this.entry.alignmentType + '"\n \t';
-          const strEducationalFramework = '\t "educationalFramework": "' + e.educationalFramework + '"\n \t';
-          const strTargetName = '\t "targetName": "' + e.label + '"\n \t';
-          const strTargetUrl = '\t "targetUrl": "' + this.$store.state.openSaltUrl + '/' +  e.id + '" \n \t },';
+          const strAlignmentType = '\t "alignmentType": "' + this.entry.alignmentType + '",\n \t';
+          const strEducationalFramework = '\t "educationalFramework": "' + e.educationalFramework + '",\n \t';
+          const strTargetName = '\t "targetName": "' + e.label + '",\n \t';
+
           input_string += strType;
           input_string += strAlignmentType;
           input_string += strEducationalFramework;
           input_string += strTargetName;
-          input_string += strTargetUrl;
+
+          if (selected.lastIndexOf(e) == selected.length - 1) {
+            const strTargetUrl = '\t "targetUrl": "' + this.$store.state.openSaltUrl + '/' +  e.id + '" \n \t }';
+            input_string += strTargetUrl;
+          } else {
+            const strTargetUrl = '\t "targetUrl": "' + this.$store.state.openSaltUrl + '/' +  e.id + '" \n \t },';
+            input_string += strTargetUrl;
+          }
         });
-        input_string += '';
+        input_string += '],';
         return input_string;
       } else {
         input_string = '[ \n \t \t \t';
         selected.forEach(e => {
-          var str = '"' + e + '"\n \t \t \t';
-          input_string += str;
+          if (selected.lastIndexOf(e) == selected.length - 1) {
+            const str = '"' + e + '"\n \t \t \t';
+            input_string += str;
+          } else {
+            const str = '"' + e + '",\n \t \t \t';
+            input_string += str;
+          }
         });
         input_string += ']';
         return input_string;
@@ -749,17 +855,17 @@ export default {
         '"license": "' + this.entry.license + '", \n \t' +
         '"timeRequired": "' + this.entry.timeRequired + '", \n \t' +
         '"audience": { \n \t \t' +
-        '"@type": "EducationalAudience" \n \t \t' +
-        '"educationalRole": ' + this.buildString(this.entry.educationalRole) + ', \n \t' +
+        '"@type": "EducationalAudience", \n \t \t' +
+        '"educationalRole": ' + this.buildString(this.entry.educationalRole) + ' \n \t' +
         '}, \n \t' +
-        '"educationalAlignment": [' + this.buildString(this.selectedCompetencies, 1) +' \n \t \t' +
-        '], \n \t' +
-        '"educationalUse: ' + this.buildString(this.entry.educationalUse) + ', \n \t' +
+        '"educationalAlignment": ' + this.buildString(this.selectedCompetencies, 1) +' \n \t \t' +
+        ' \n \t' +
+        '"educationalUse": ' + this.buildString(this.entry.educationalUse) + ', \n \t' +
         '"typicalAgeRange": "' + this.entry.typicalAgeRange + '", \n \t' +
         '"interactivityType": ' + this.buildString(this.entry.interactivityType) + ', \n \t' +
         '"learningResourceType": ' + this.buildString(this.entry.learningResourceType) + ', \n \t' +
         '"isBasedOnUrl": "' + this.entry.isBasedOnUrl + '", \n \t' +
-        '"url": "' + this.entry.url + '", \n' +
+        '"url": "' + this.entry.url + '" \n' +
         '} \n ' +
         // eslint-disable-next-line no-useless-escape
         '<\/script>';
