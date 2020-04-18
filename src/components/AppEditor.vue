@@ -270,7 +270,7 @@
           <!-- educational Frameworks -->
 
           <!-- <v-expansion-panels hover v-if="bShowExtendedView"> -->
-          <v-expansion-panels hover>
+          <v-expansion-panels flat hover>
             <v-expansion-panel>
               <v-expansion-panel-header>
                 <span>
