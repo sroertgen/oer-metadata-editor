@@ -269,7 +269,8 @@
 
           <!-- educational Frameworks -->
 
-          <v-expansion-panels hover v-if="bShowExtendedView">
+          <!-- <v-expansion-panels hover v-if="bShowExtendedView"> -->
+          <v-expansion-panels hover>
             <v-expansion-panel>
               <v-expansion-panel-header>
                 <span>
@@ -609,37 +610,37 @@ export default {
         required: value => !!value || 'Pflichtfeld.'
       },
       entry: {
-        name: null,
+        name: '',
         about: '',
-        dateCreated: null,
-        author: null,
-        publisher: null,
-        inLanguage: null,
+        dateCreated: '',
+        author: '',
+        publisher: '',
+        inLanguage: '',
         accessibilityAPI: [],
-        accessibilityControl: null,
-        accessibilityFeature: null,
-        accessibilityHazard: null,
-        license: null,
-        timeRequired: null,
-        educationalRole: null,
-        alignmentType: null,
-        educationalFramework: null,
-        targetDescription: null,
-        targetName: null,
-        targetURL: null,
-        educationalUse: null,
-        typicalAgeRange: null,
-        interactivityType: null,
+        accessibilityControl: '',
+        accessibilityFeature: '',
+        accessibilityHazard: '',
+        license: '',
+        timeRequired: '',
+        educationalRole: '',
+        alignmentType: '',
+        educationalFramework: '',
+        targetDescription: '',
+        targetName: '',
+        targetURL: '',
+        educationalUse: '',
+        typicalAgeRange: '',
+        interactivityType: '',
         learningResourceType: [],
-        isBasedOnUrl: null,
-        url: null,
+        isBasedOnUrl: '',
+        url: '',
         thumbnail: '',
         tags: '',
         project: '',
         source: 'Mein Index',
         spider: '',
         // TODO insert current date in correct format
-        date_scraped: null
+        date_scraped: ''
       },
       popover: {
         name: {
@@ -787,7 +788,7 @@ export default {
       console.log(this.entry);
     },
     buildString(selected, isCompetence = 0) {
-      var input_string = '"null"';
+      var input_string = '""';
       if (selected == null && isCompetence == 0) {
         return input_string;
       } else if (selected.length == 0 && isCompetence == 0) {
@@ -797,7 +798,7 @@ export default {
         return input_string;
       // we get selected Competencies passed
       } else if (selected.length == 0 && isCompetence == 1) {
-        input_string = '"null",';
+        input_string = '"",';
         return input_string;
       } else if (selected.length >= 1 && isCompetence == 1) {
         input_string = '[ \t';
@@ -886,17 +887,18 @@ export default {
         .getVocab(vocab)
         .then(res => {
           res.data.vocabs.forEach(e => {
+            const value = e.label[0]['@value'];
             if (vocab == "educationalRole") {
-              this.educationalRoleOptions.push({'value': e.label, 'text': e.label, 'definition': e.description})
+              this.educationalRoleOptions.push({'value': value, 'text': value, 'definition': e.description})
             } else if (vocab == "alignmentType") {
-              this.alignmentTypeOptions.push({'value': e.label, 'text': e.label, 'definition': e.description})
+              this.alignmentTypeOptions.push({'value': value, 'text': value, 'definition': e.description})
             } else if (vocab == "educationalUse") {
-              this.educationalUseOptions.push({'value': e.label, 'text': e.label, 'definition': e.description})
+              this.educationalUseOptions.push({'value': value, 'text': value, 'definition': e.description})
             } else if (vocab == "learningResourceType") {
-              this.learningResourceTypeOptions.push({'value': e.label, 'text': e.label, 'definition': e.description});
+              this.learningResourceTypeOptions.push({'value': value, 'text': value, 'definition': e.description});
               this.bLearningResourceTypeOptions = true;
             } else if (vocab == "interactivityType") {
-              this.interactivityTypeOptions.push({'value': e.label, 'text': e.label, 'definition': e.description})
+              this.interactivityTypeOptions.push({'value': value, 'text': value, 'definition': e.description})
           }
         })
        })
