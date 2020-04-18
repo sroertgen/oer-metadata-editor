@@ -25,7 +25,7 @@ This is all pre-alpha and to be seen as a PoC. Needs more testing.
 If you want to test it out, just [install Docker](https://docs.docker.com/get-docker/).
 After that go into project root and run `docker-compose up`.
 
-This will pull the oer-flask-api container from Docker-Hub (https://hub.docker.com/repository/docker/laocoon667/oer-flask-api/general)
+This will pull the oer-flask-api container from Docker-Hub (https://hub.docker.com/repository/docker/laocoon667/oer-flask-api)
 and build the metadata-editor from the Dockerfile.
 
 After a while your api is available at port 5000 and your editor at port 80.
