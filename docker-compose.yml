@@ -1,36 +1,11 @@
 version: "3"
 
 services:
-  # elasticsearch:
-  #   image: elasticsearch:7.4.2
-  #   environment:
-  #     - "discovery.type=single-node"
-  #     - ELASTIC_PASSWORD=changethisinproduction
-  #     - xpack.security.enabled=true
-  #     - http.port=9200
-  #     - http.cors.enabled=true
-  #     - http.cors.allow-origin=*
-  #     - http.cors.allow-headers=*
-  #     - http.cors.allow-credentials=true
-  #     - bootstrap.memory_lock=true
-  #     - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
-  #   networks:
-  #     - elasticnet
-  #   restart: on-failure
-
-  # flask:
-  #   build:
-  #     context: ./flask
-  #     dockerfile: flask.Dockerfile
-  #   networks:
-  #     - elasticnet
-  #   deploy:
-  #     restart_policy:
-  #       condition: none
-  #       delay: 60s
-  #   ports:
-  #     - "5000:5000"
-  #   restart: always
+  oer-flask-api:
+    image: laocoon667/oer-flask-api:latest
+    ports:
+      - "5000:5000"
+    restart: on-failure
 
   oer-metadata-editor:
     build:
