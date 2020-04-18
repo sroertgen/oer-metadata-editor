@@ -28,7 +28,7 @@ After that go into project root and run `docker-compose up`.
 This will pull the oer-flask-api container from Docker-Hub (https://hub.docker.com/repository/docker/laocoon667/oer-flask-api/general)
 and build the metadata-editor from the Dockerfile.
 
-After a while your api is available at port 5000 and your editor ad port 80.
+After a while your api is available at port 5000 and your editor at port 80.
 Just go to <http://localhost> and check it out.
 
 ## Project setup for developing
