@@ -1,0 +1,94 @@
+[{
+    "value": "alternativeText",
+    "text": "alternativeText"
+}, {
+    "value": "annotations",
+    "text": "annotations"
+}, {
+    "value": "audioDescription",
+    "text": "audioDescription"
+}, {
+    "value": "bookmarks",
+    "text": "bookmarks"
+}, {
+    "value": "braille",
+    "text": "braille"
+}, {
+    "value": "captions",
+    "text": "captions"
+}, {
+    "value": "ChemML",
+    "text": "ChemML"
+}, {
+    "value": "describedMath",
+    "text": "describedMath"
+}, {
+    "value": "displayTransformability",
+    "text": "displayTransformability"
+}, {
+    "value": "highContrastAudio",
+    "text": "highContrastAudio"
+}, {
+    "value": "highContrastDisplay",
+    "text": "highContrastDisplay"
+}, {
+    "value": "index",
+    "text": "index"
+}, {
+    "value": "largePrint",
+    "text": "largePrint"
+}, {
+    "value": "latex",
+    "text": "latex"
+}, {
+    "value": "longDescription",
+    "text": "longDescription"
+}, {
+    "value": "MathML",
+    "text": "MathML"
+}, {
+    "value": "none",
+    "text": "none"
+}, {
+    "value": "printPageNumbers",
+    "text": "printPageNumbers"
+}, {
+    "value": "readingOrder",
+    "text": "readingOrder"
+}, {
+    "value": "rubyAnnotations",
+    "text": "rubyAnnotations"
+}, {
+    "value": "signLanguage",
+    "text": "signLanguage"
+}, {
+    "value": "structuralNavigation",
+    "text": "structuralNavigation"
+}, {
+    "value": "synchronizedAudioText",
+    "text": "synchronizedAudioText"
+}, {
+    "value": "tableOfContents",
+    "text": "tableOfContents"
+}, {
+    "value": "taggedPDF",
+    "text": "taggedPDF"
+}, {
+    "value": "tactileGraphic",
+    "text": "tactileGraphic"
+}, {
+    "value": "tactileObject",
+    "text": "tactileObject"
+}, {
+    "value": "timingControl",
+    "text": "timingControl"
+}, {
+    "value": "transcript",
+    "text": "transcript"
+}, {
+    "value": "ttsMarkup",
+    "text": "ttsMarkup"
+}, {
+    "value": "unlocked",
+    "text": "unlocked"
+}]

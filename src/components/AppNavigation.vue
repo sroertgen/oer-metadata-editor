@@ -4,12 +4,9 @@
       <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
-    <v-btn to="/about" text>About</v-btn>
-    <v-btn
-      icon
-      href="https://github.com/sroertgen/oer-metadata-editor"
-      target="_blank"
-    >
+    <v-btn v-if="($route.name != 'Vocabulary')" to="/vocabulary" text>Vocabulary</v-btn>
+    <v-btn v-if="($route.name != 'About')" to="/about" text>About</v-btn>
+    <v-btn icon href="https://github.com/sroertgen/oer-metadata-editor" target="_blank">
       <v-icon>mdi-github</v-icon>
     </v-btn>
   </v-toolbar>

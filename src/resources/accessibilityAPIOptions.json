@@ -1,0 +1,45 @@
+[{
+        "value": "AndroidAccessibility",
+        "text": "AndroidAccessibility"
+    },
+    {
+        "value": "ARIA",
+        "text": "ARIA"
+    },
+    {
+        "value": "ATK",
+        "text": "ATK"
+    },
+    {
+        "value": "AT-SPI",
+        "text": "AT-SPI"
+    },
+    {
+        "value": "BlackberryAccessibility",
+        "text": "BlackberryAccessibility"
+    },
+    {
+        "value": "iAccessible2",
+        "text": "iAccessible2"
+    },
+    {
+        "value": "iOSAccessibility",
+        "text": "iOSAccessibility"
+    },
+    {
+        "value": "JavaAccessibility",
+        "text": "JavaAccessibility"
+    },
+    {
+        "value": "MacOSXAccessibility",
+        "text": "MacOSXAccessibility"
+    },
+    {
+        "value": "MSAA",
+        "text": "MSAA"
+    },
+    {
+        "value": "UIAutomation",
+        "text": "UIAutomation"
+    }
+]

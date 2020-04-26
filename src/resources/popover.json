@@ -1,0 +1,98 @@
+{
+    "name": {
+        "definition": "Ein eindeutiger Name, um das Material aufzufinden.",
+        "link": "https://schema.org/name"
+    },
+    "about": {
+        "definition": "Eine Beschreibung, die den Menschen hilft, den Zweck des Materials zu verstehen.",
+        "link": "https://schema.org/about"
+    },
+    "author": {
+        "definition": "Name der Person oder Organisation, die das Material erstellt hat.",
+        "link": "https://schema.org/author"
+    },
+    "publisher": {
+        "definition": "Name der Person oder Organisation, die das Material herausgegeben hat.",
+        "link": "https://schema.org/publisher"
+    },
+    "inLanguage": {
+        "definition": "Die Sprache in der das Material verfasst ist.",
+        "link": "https://schema.org/inLanguage"
+    },
+    "accessibilityAPI": {
+        "definition": "Indicates that the resource is compatible with the referenced accessibility API.",
+        "link": "https://schema.org/accessibilityAPI"
+    },
+    "accessibilityControl": {
+        "definition": "Identifies input methods that are sufficient to fully control the described resource.",
+        "link": "https://schema.org/accessibilityControl"
+    },
+    "accessibilityFeature": {
+        "definition": "Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility.",
+        "link": "https://schema.org/accessibilityFeature"
+    },
+    "license": {
+        "definition": "Bitte eine Lizenz auswählen",
+        "link": "https://schema.org/license"
+    },
+    "accessibilityHazard": {
+        "definition": "A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3.",
+        "link": "https://schema.org/accessibilityHazard"
+    },
+    "timeRequired": {
+        "definition": "Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience.",
+        "link": "https://schema.org/timeRequired"
+    },
+    "educationalRole": {
+        "definition": "The role that describes the target audience of the content. Note: schema.org/EducationalAudience is a subtype of Schema.org/Audience.",
+        "link": "https://schema.org/educationalRole"
+    },
+    "educationalAlignment": {
+        "definition": "An alignment to an established educational framework.",
+        "link": "https://schema.org/educationalAlignment"
+    },
+    "alignmentType": {
+        "definition": "A category of alignment between the learning resource and the framework node. Recommended values include: assesses, teaches, requires, textComplexity, readingLevel,educationalSubject, and educationalLevel.",
+        "link": "https://schema.org/educationalAlignment"
+    },
+    "educationalFramework": {
+        "definition": "The framework to which the resource being described is aligned.",
+        "link": "https://schema.org/educationalFramework"
+    },
+    "targetDescription": {
+        "definition": "The description of a node in an established educational framework.",
+        "link": "https://schema.org/targetDescription"
+    },
+    "targetName": {
+        "definition": "The name of a node in an established educational framework.",
+        "link": "https://schema.org/targetName"
+    },
+    "targetURL": {
+        "definition": "The URL of a node in an established educational framework.",
+        "link": "https://schema.org/targetURL"
+    },
+    "educationalUse": {
+        "definition": "The purpose of a work in the context of education; for example, 'assignment', 'group work'.",
+        "link": "https://schema.org/educationalUse"
+    },
+    "typicalAgeRange": {
+        "definition": "The typical expected age range, e.g. '7-9', '11-'.",
+        "link": "https://schema.org/typicalAgeRange"
+    },
+    "interactivityType": {
+        "definition": "The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.",
+        "link": "https://schema.org/interactivityType"
+    },
+    "learningResourceType": {
+        "definition": "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.",
+        "link": "https://schema.org/learningResourceType"
+    },
+    "isBasedOnUrl": {
+        "definition": "A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.",
+        "link": "https://schema.org/isBasedOnUrl"
+    },
+    "url": {
+        "definition": "A link to the resource.",
+        "link": "https://schema.org/url"
+    }
+}

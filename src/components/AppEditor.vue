@@ -1,15 +1,12 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row align="center" justify="center">
       <h1>Metadaten-Editor</h1>
     </v-row>
 
     <v-row>
       <v-col>
-        <v-switch
-          label="Alle Felder anzeigen"
-          v-model="bShowExtendedView"
-        ></v-switch>
+        <v-switch label="Alle Felder anzeigen" v-model="bShowExtendedView"></v-switch>
       </v-col>
     </v-row>
 
@@ -60,10 +57,7 @@
                   v-on="on"
                 ></v-text-field>
               </template>
-              <v-date-picker
-                v-model="entry.dateCreated"
-                @input="menu = false"
-              ></v-date-picker>
+              <v-date-picker v-model="entry.dateCreated" @input="menu = false"></v-date-picker>
             </v-menu>
           </div>
           <!-- Autorin -->
@@ -83,11 +77,7 @@
 
           <!-- Publisher -->
 
-          <v-text-field
-            v-if="bShowExtendedView"
-            label="Herausgeber:in"
-            v-model="entry.publisher"
-          >
+          <v-text-field v-if="bShowExtendedView" label="Herausgeber:in" v-model="entry.publisher">
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
@@ -102,11 +92,7 @@
 
           <!-- inLanguage -->
 
-          <v-text-field
-            v-if="bShowExtendedView"
-            label="Sprache"
-            v-model="entry.inLanguage"
-          >
+          <v-text-field v-if="bShowExtendedView" label="Sprache" v-model="entry.inLanguage">
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
@@ -134,11 +120,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.accessibilityAPI.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.accessibilityAPI.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -162,11 +144,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.accessibilityControl.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.accessibilityControl.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -190,11 +168,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.accessibilityFeature.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.accessibilityFeature.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -218,11 +192,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.accessibilityHazard.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.accessibilityHazard.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -276,26 +246,17 @@
                 <span>
                   <v-tooltip right :max-width="toolTipMaxWidth">
                     <template v-slot:activator="{ on }">
-                      <v-btn
-                        icon
-                        :href="popover.educationalFramework.link"
-                        target="_blank"
-                      >
+                      <v-btn icon :href="popover.educationalFramework.link" target="_blank">
                         <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                       </v-btn>
                     </template>
                     {{ popover.educationalFramework.definition }}
-                  </v-tooltip>
-                  Rahmenlehrpläne einblenden
+                  </v-tooltip>Rahmenlehrpläne einblenden
                 </span>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div class="text-center">
-                  <v-progress-circular
-                    v-if="!competenceFrameworks"
-                    indeterminate
-                  >
-                  </v-progress-circular>
+                  <v-progress-circular v-if="!competenceFrameworks" indeterminate></v-progress-circular>
                 </div>
                 <v-treeview
                   v-if="competenceFrameworks"
@@ -319,13 +280,9 @@
                     </v-tooltip>
                   </template>
                 </v-treeview>
-                <template v-if="!selectedCompetencies.length">
-                  No nodes selected.
-                </template>
+                <template v-if="!selectedCompetencies.length">No nodes selected.</template>
                 <template v-else>
-                  <div v-for="node in selectedCompetencies" :key="node.id">
-                    {{ node.label }}
-                  </div>
+                  <div v-for="node in selectedCompetencies" :key="node.id">{{ node.label }}</div>
                 </template>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -344,11 +301,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.learningResourceType.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.learningResourceType.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -359,10 +312,7 @@
 
           <!-- timeRequired -->
 
-          <v-text-field
-            label="Benötigte Zeit (in Minuten)"
-            v-model="entry.timeRequired"
-          >
+          <v-text-field label="Benötigte Zeit (in Minuten)" v-model="entry.timeRequired">
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
@@ -389,11 +339,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.educationalRole.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.educationalRole.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -417,11 +363,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.educationalUse.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.educationalUse.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -440,11 +382,7 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.typicalAgeRange.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.typicalAgeRange.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
@@ -468,25 +406,18 @@
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
-                  <v-btn
-                    icon
-                    :href="popover.interactivityType.link"
-                    target="_blank"
-                  >
+                  <v-btn icon :href="popover.interactivityType.link" target="_blank">
                     <v-icon v-on="on">mdi-help-circle-outline</v-icon>
                   </v-btn>
                 </template>
                 {{ popover.interactivityType.definition }}
               </v-tooltip>
             </template>
-          </v-select> 
+          </v-select>
 
           <!-- isBasedOnURL -->
 
-          <v-text-field
-            label="Basiert auf der Ressource unter URL:"
-            v-model="entry.isBasedOnUrl"
-          >
+          <v-text-field label="Basiert auf der Ressource unter URL:" v-model="entry.isBasedOnUrl">
             <template v-slot:prepend>
               <v-tooltip right :max-width="toolTipMaxWidth">
                 <template v-slot:activator="{ on }">
@@ -510,21 +441,14 @@
           <v-checkbox
             label="Eintrag an Elasticsearch-Instanz senden"
             v-model="bSendToElasticsearch"
-          >
-          </v-checkbox>
+          ></v-checkbox>
           <div v-if="bSendToElasticsearch">
             <p>
               Falls der Eintrag an eine Elasticsearch-Instanz gesendet werden
               soll, trage hier die entsprechenden Daten ein:
             </p>
-            <v-text-field
-              label="Url des Elastic-Search-Index"
-              v-model="esData.url"
-            ></v-text-field>
-            <v-text-field
-              label="Name des Elastic-Search-Index"
-              v-model="esData.index"
-            ></v-text-field>
+            <v-text-field label="Url des Elastic-Search-Index" v-model="esData.url"></v-text-field>
+            <v-text-field label="Name des Elastic-Search-Index" v-model="esData.index"></v-text-field>
             <v-select
               label="Autorisierungsmethode wählen"
               :items="authorizationOptions"
@@ -535,15 +459,10 @@
                 v-if="selectedAuthorizationOption == 'Authorization-Header'"
                 label="Bitte Authorization-Header eingeben"
                 v-model="esData.header"
-              >
-              </v-text-field>
+              ></v-text-field>
               <div v-else>
                 <v-row>
-                  <v-text-field
-                    class="pa-2"
-                    label="Username"
-                    v-model="esData.username"
-                  ></v-text-field>
+                  <v-text-field class="pa-2" label="Username" v-model="esData.username"></v-text-field>
                   <v-text-field
                     class="pa-2"
                     label="Password"
@@ -576,19 +495,18 @@
       </v-col>
     </v-row>
 
-    <v-textarea
-      name="json-ld-output"
-      filled
-      label="JSON-LD Output"
-      auto-grow
-      :value="lrmi_text"
-    ></v-textarea>
+    <v-textarea name="json-ld-output" filled label="JSON-LD Output" auto-grow :value="lrmi_text"></v-textarea>
   </v-container>
 </template>
 
 <script>
 import apiClient from '../axios';
 import esClient from '../axios';
+import accessibilityFeatureOptions from '../resources/accessibilityFeatureOptions.json';
+import popover from '../resources/popover.json';
+import accessibilityAPIOptions from '../resources/accessibilityAPIOptions.json';
+import accessibilityControlOptions from '../resources/accessibilityControlOptions.json';
+import accessibilityHazardOptions from '../resources/accessibilityHazardOptions.json';
 
 export default {
   name: 'AppEditor',
@@ -642,135 +560,24 @@ export default {
         // TODO insert current date in correct format
         date_scraped: ''
       },
-      popover: {
-        name: {
-          definition: 'Ein eindeutiger Name, um das Material aufzufinden.', link: 'https://schema.org/name'},
-        about: {
-          definition: 'Eine Beschreibung, die den Menschen hilft, den Zweck des Materials zu verstehen.', link: 'https://schema.org/about'},
-        author: {
-          definition: 'Name der Person oder Organisation, die das Material erstellt hat.', link: 'https://schema.org/author'},
-        publisher: {
-          definition: 'Name der Person oder Organisation, die das Material herausgegeben hat.', link: 'https://schema.org/publisher'},
-        inLanguage: {
-          definition: 'Die Sprache in der das Material verfasst ist.', link: 'https://schema.org/inLanguage'},
-        accessibilityAPI: {
-          definition: 'Indicates that the resource is compatible with the referenced accessibility API.', link: 'https://schema.org/accessibilityAPI'},
-        accessibilityControl: {
-          definition: 'Identifies input methods that are sufficient to fully control the described resource.', link: 'https://schema.org/accessibilityControl'},
-        accessibilityFeature: {
-          definition: 'Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility.', link: 'https://schema.org/accessibilityFeature'},
-        license: {
-          definition: 'Bitte eine Lizenz auswählen', link: 'https://schema.org/license'},
-        accessibilityHazard: {
-          definition: 'A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3.', link: 'https://schema.org/accessibilityHazard'},
-        timeRequired: {
-          definition: 'Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience.', link: 'https://schema.org/timeRequired'},
-        educationalRole: {
-          definition: 'The role that describes the target audience of the content. Note: schema.org/EducationalAudience is a subtype of Schema.org/Audience.', link: 'https://schema.org/educationalRole'},
-        educationalAlignment: {
-          definition: 'An alignment to an established educational framework.', link: 'https://schema.org/educationalAlignment'},
-        alignmentType: {
-          definition: 'A category of alignment between the learning resource and the framework node. Recommended values include: "assesses", "teaches", "requires", "textComplexity", "readingLevel", "educationalSubject", and "educationalLevel".', link: 'https://schema.org/educationalAlignment'},
-        educationalFramework: {
-          definition: 'The framework to which the resource being described is aligned.', link: 'https://schema.org/educationalFramework'},
-        targetDescription: {
-          definition: 'The description of a node in an established educational framework.', link: 'https://schema.org/targetDescription'},
-        targetName: {
-          definition: 'The name of a node in an established educational framework.', link: 'https://schema.org/targetName'},
-        targetURL: {
-          definition: 'The URL of a node in an established educational framework.', link: 'https://schema.org/targetURL'},
-        educationalUse: {
-          definition: 'The purpose of a work in the context of education; for example, "assignment", "group work".', link: 'https://schema.org/educationalUse'},
-        typicalAgeRange: {
-          definition: 'The typical expected age range, e.g. "7-9", "11-".', link: 'https://schema.org/typicalAgeRange'},
-        interactivityType:{
-          definition: 'The predominant mode of learning supported by the learning resource. Acceptable values are "active", "expositive", or "mixed".', link: 'https://schema.org/interactivityType'},
-        learningResourceType:{
-          definition: 'The predominant type or kind characterizing the learning resource. For example, "presentation", "handout".', link: 'https://schema.org/learningResourceType'},
-        isBasedOnUrl: {
-          definition:
-            'A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.',
-          link: 'https://schema.org/isBasedOnUrl'
-        },
-        url: {
-          definition: 'A link to the resource.', link: 'https://schema.org/url'}
-      },
-      authorizationOptions: [
-        'Authorization-Header',
-        'Username:Password'
-      ],
+      popover: popover,
+      authorizationOptions: ['Authorization-Header', 'Username:Password'],
       licenseOptions: [
-        { value: null, text: 'Bitte eine Lizenz auswählen', definition: 'Infotext' },
+        {
+          value: null,
+          text: 'Bitte eine Lizenz auswählen',
+          definition: 'Infotext'
+        },
         { value: 'CC 0', text: 'CC 0', definition: 'Infotext' },
         { value: 'CC BY', text: 'CC BY', definition: 'Infotext' },
         { value: 'CC BY-SA', text: 'CC BY-SA', definition: 'Infotext' },
         { value: 'CC BY-SA-NC', text: 'CC BY-SA-NC', definition: 'Infotext' },
         { value: 'CC BY-ND', text: 'CC BY-ND', definition: 'Infotext' }
       ],
-      accessibilityAPIOptions: [
-        { value: 'AndroidAccessibility', text: 'AndroidAccessibility'},
-        { value: 'ARIA', text: 'ARIA' },
-        { value: 'ATK', text: 'ATK' },
-        { value: 'AT-SPI', text: 'AT-SPI' },
-        { value: 'BlackberryAccessibility', text: 'BlackberryAccessibility' },
-        { value: 'iAccessible2', text: 'iAccessible2' },
-        { value: 'iOSAccessibility', text: 'iOSAccessibility' },
-        { value: 'JavaAccessibility', text: 'JavaAccessibility' },
-        { value: 'MacOSXAccessibility', text: 'MacOSXAccessibility' },
-        { value: 'MSAA', text: 'MSAA' },
-        { value: 'UIAutomation', text: 'UIAutomation' }
-      ],
-      accessibilityControlOptions: [
-        { value: 'Full Keyboard Control', text: 'Full Keyboard Control'},
-        { value: 'Full Mouse Control', text: 'Full Mouse Control'},
-        { value: 'Full Switch Control', text: 'Full Switch Control'},
-        { value: 'Full Touch Control', text: 'Full Touch Control'},
-        { value: 'Full Video Control', text: 'Full Video Control'},
-        { value: 'Full Voice Control', text: 'Full Voice Control'},
-      ],
-      accessibilityFeatureOptions: [
-        { value: 'alternativeText', text: 'alternativeText' },
-        { value: 'annotations', text: 'annotations' },
-        { value: 'audioDescription', text: 'audioDescription' },
-        { value: 'bookmarks', text: 'bookmarks' },
-        { value: 'braille', text: 'braille' },
-        { value: 'captions', text: 'captions' },
-        { value: 'ChemML', text: 'ChemML' },
-        { value: 'describedMath', text: 'describedMath' },
-        { value: 'displayTransformability', text: 'displayTransformability' },
-        { value: 'highContrastAudio', text: 'highContrastAudio' },
-        { value: 'highContrastDisplay', text: 'highContrastDisplay' },
-        { value: 'index', text: 'index' },
-        { value: 'largePrint', text: 'largePrint' },
-        { value: 'latex', text: 'latex' },
-        { value: 'longDescription', text: 'longDescription' },
-        { value: 'MathML', text: 'MathML' },
-        { value: 'none', text: 'none' },
-        { value: 'printPageNumbers', text: 'printPageNumbers' },
-        { value: 'readingOrder', text: 'readingOrder' },
-        { value: 'rubyAnnotations', text: 'rubyAnnotations' },
-        { value: 'signLanguage', text: 'signLanguage' },
-        { value: 'structuralNavigation', text: 'structuralNavigation' },
-        { value: 'synchronizedAudioText', text: 'synchronizedAudioText' },
-        { value: 'tableOfContents', text: 'tableOfContents' },
-        { value: 'taggedPDF', text: 'taggedPDF' },
-        { value: 'tactileGraphic', text: 'tactileGraphic' },
-        { value: 'tactileObject', text: 'tactileObject' },
-        { value: 'timingControl', text: 'timingControl' },
-        { value: 'transcript', text: 'transcript' },
-        { value: 'ttsMarkup', text: 'ttsMarkup' },
-        { value: 'unlocked', text: 'unlocked' }
-      ],
-      accessibilityHazardOptions: [
-        { value: 'flashing', text: 'flashing' },
-        { value: 'noFlashingHazard', text: 'noFlashingHazard' },
-        { value: 'motionSimulation', text: 'motionSimulation' },
-        { value: 'noMotionSimulationHazard', text: 'noMotionSimulationHazard' },
-        { value: 'sound', text: 'sound' },
-        { value: 'noSoundHazard', text: 'noSoundHazard' },
-        { value: 'unknown', text: 'unknown' },
-        { value: 'none', text: 'none' }
-      ],
+      accessibilityAPIOptions: accessibilityAPIOptions,
+      accessibilityControlOptions: accessibilityControlOptions,
+      accessibilityFeatureOptions: accessibilityFeatureOptions,
+      accessibilityHazardOptions: accessibilityHazardOptions,
       lrmi_text: '',
       competenceFrameworks: null,
       selectedCompetencies: [],
@@ -796,7 +603,7 @@ export default {
       } else if (selected.length == 1 && isCompetence == 0) {
         input_string = '"' + selected + '"';
         return input_string;
-      // we get selected Competencies passed
+        // we get selected Competencies passed
       } else if (selected.length == 0 && isCompetence == 1) {
         input_string = '"",';
         return input_string;
@@ -804,8 +611,10 @@ export default {
         input_string = '[ \t';
         selected.forEach(e => {
           const strType = '\n \t { \n \t \t "@type": "AlignmentObject", \n \t';
-          const strAlignmentType = '\t "alignmentType": "' + this.entry.alignmentType + '",\n \t';
-          const strEducationalFramework = '\t "educationalFramework": "' + e.educationalFramework + '",\n \t';
+          const strAlignmentType =
+            '\t "alignmentType": "' + this.entry.alignmentType + '",\n \t';
+          const strEducationalFramework =
+            '\t "educationalFramework": "' + e.educationalFramework + '",\n \t';
           const strTargetName = '\t "targetName": "' + e.label + '",\n \t';
 
           input_string += strType;
@@ -814,10 +623,20 @@ export default {
           input_string += strTargetName;
 
           if (selected.lastIndexOf(e) == selected.length - 1) {
-            const strTargetUrl = '\t "targetUrl": "' + this.$store.state.openSaltUrl + '/' +  e.id + '" \n \t }';
+            const strTargetUrl =
+              '\t "targetUrl": "' +
+              this.$store.state.openSaltUrl +
+              '/' +
+              e.id +
+              '" \n \t }';
             input_string += strTargetUrl;
           } else {
-            const strTargetUrl = '\t "targetUrl": "' + this.$store.state.openSaltUrl + '/' +  e.id + '" \n \t },';
+            const strTargetUrl =
+              '\t "targetUrl": "' +
+              this.$store.state.openSaltUrl +
+              '/' +
+              e.id +
+              '" \n \t },';
             input_string += strTargetUrl;
           }
         });
@@ -844,32 +663,72 @@ export default {
         '{ \n \t' +
         '"@context": "http://schema.org/", \n \t' +
         '"@type": "CreativeWork", \n \t' +
-        '"name": "' + this.entry.name + '", \n \t' +
-        '"about": "' + this.entry.about.replace(/(\r\n|\n|\r)/gm, " ") + '", \n \t' +
-        '"author": "' + this.entry.author + '", \n \t' +
-        '"publisher": "' + this.entry.publisher + '", \n \t' +
-        '"inLanguage": "' + this.entry.inLanguage + '", \n \t' +
-        '"accessibilityAPI": ' + this.buildString(this.entry.accessibilityAPI) + ', \n \t' +
-        '"accessibilityControl": ' + this.buildString(this.entry.accessibilityControl) + ', \n \t' +
-        '"accessibilityFeature": ' + this.buildString(this.entry.accessibilityFeature) + ', \n \t' +
-        '"accessibilityHazard": ' + this.buildString(this.entry.accessibilityHazard) + ', \n \t' +
-        '"license": "' + this.entry.license + '", \n \t' +
-        '"timeRequired": "' + this.entry.timeRequired + '", \n \t' +
+        '"name": "' +
+        this.entry.name +
+        '", \n \t' +
+        '"about": "' +
+        this.entry.about.replace(/(\r\n|\n|\r)/gm, ' ') +
+        '", \n \t' +
+        '"author": "' +
+        this.entry.author +
+        '", \n \t' +
+        '"publisher": "' +
+        this.entry.publisher +
+        '", \n \t' +
+        '"inLanguage": "' +
+        this.entry.inLanguage +
+        '", \n \t' +
+        '"accessibilityAPI": ' +
+        this.buildString(this.entry.accessibilityAPI) +
+        ', \n \t' +
+        '"accessibilityControl": ' +
+        this.buildString(this.entry.accessibilityControl) +
+        ', \n \t' +
+        '"accessibilityFeature": ' +
+        this.buildString(this.entry.accessibilityFeature) +
+        ', \n \t' +
+        '"accessibilityHazard": ' +
+        this.buildString(this.entry.accessibilityHazard) +
+        ', \n \t' +
+        '"license": "' +
+        this.entry.license +
+        '", \n \t' +
+        '"timeRequired": "' +
+        this.entry.timeRequired +
+        '", \n \t' +
         '"audience": { \n \t \t' +
         '"@type": "EducationalAudience", \n \t \t' +
-        '"educationalRole": ' + this.buildString(this.entry.educationalRole) + ' \n \t' +
-        '}, \n \t' +
-        '"educationalAlignment": ' + this.buildString(this.selectedCompetencies, 1) +' \n \t \t' +
+        '"educationalRole": ' +
+        this.buildString(this.entry.educationalRole) +
         ' \n \t' +
-        '"educationalUse": ' + this.buildString(this.entry.educationalUse) + ', \n \t' +
-        '"typicalAgeRange": "' + this.entry.typicalAgeRange + '", \n \t' +
-        '"interactivityType": ' + this.buildString(this.entry.interactivityType) + ', \n \t' +
-        '"learningResourceType": ' + this.buildString(this.entry.learningResourceType) + ', \n \t' +
-        '"isBasedOnUrl": "' + this.entry.isBasedOnUrl + '", \n \t' +
-        '"url": "' + this.entry.url + '" \n' +
+        '}, \n \t' +
+        '"educationalAlignment": ' +
+        this.buildString(this.selectedCompetencies, 1) +
+        ' \n \t \t' +
+        ' \n \t' +
+        '"educationalUse": ' +
+        this.buildString(this.entry.educationalUse) +
+        ', \n \t' +
+        '"typicalAgeRange": "' +
+        this.entry.typicalAgeRange +
+        '", \n \t' +
+        '"interactivityType": ' +
+        this.buildString(this.entry.interactivityType) +
+        ', \n \t' +
+        '"learningResourceType": ' +
+        this.buildString(this.entry.learningResourceType) +
+        ', \n \t' +
+        '"isBasedOnUrl": "' +
+        this.entry.isBasedOnUrl +
+        '", \n \t' +
+        '"url": "' +
+        this.entry.url +
+        '" \n' +
         '} \n ' +
         // eslint-disable-next-line no-useless-escape
-        '<\/script>';
+        '<' +
+        '/' +
+        'script>';
     },
     getCompetenceFrameworks() {
       apiClient.competenceFrameworks
@@ -887,25 +746,55 @@ export default {
         .getVocab(vocab)
         .then(res => {
           res.data.vocabs.forEach(e => {
-            const value = e.label[0]['@value'];
-            if (vocab == "educationalRole") {
-              this.educationalRoleOptions.push({'value': value, 'text': value, 'definition': e.description})
-            } else if (vocab == "alignmentType") {
-              this.alignmentTypeOptions.push({'value': value, 'text': value, 'definition': e.description})
-            } else if (vocab == "educationalUse") {
-              this.educationalUseOptions.push({'value': value, 'text': value, 'definition': e.description})
-            } else if (vocab == "learningResourceType") {
-              this.learningResourceTypeOptions.push({'value': value, 'text': value, 'definition': e.description});
+            console.log(e.label.length);
+            var value = '';
+
+            for (let i = 0; i < e.label.length; i++) {
+              if (e.label[i]['@language'] == 'de') {
+                value = e.label[i]['@value'];
+                break;
+              } else {
+                value = e.label[i]['@value'];
+              }
+            }
+            console.log(value);
+            if (vocab == 'educationalRole') {
+              this.educationalRoleOptions.push({
+                value: value,
+                text: value,
+                definition: e.description
+              });
+            } else if (vocab == 'alignmentType') {
+              this.alignmentTypeOptions.push({
+                value: value,
+                text: value,
+                definition: e.description
+              });
+            } else if (vocab == 'educationalUse') {
+              this.educationalUseOptions.push({
+                value: value,
+                text: value,
+                definition: e.description
+              });
+            } else if (vocab == 'learningResourceType') {
+              this.learningResourceTypeOptions.push({
+                value: value,
+                text: value,
+                definition: e.description
+              });
               this.bLearningResourceTypeOptions = true;
-            } else if (vocab == "interactivityType") {
-              this.interactivityTypeOptions.push({'value': value, 'text': value, 'definition': e.description})
-          }
+            } else if (vocab == 'interactivityType') {
+              this.interactivityTypeOptions.push({
+                value: value,
+                text: value,
+                definition: e.description
+              });
+            }
+          });
         })
-       })
-       .catch((error) => {
-         console.error(error);
-         
-       })
+        .catch(error => {
+          console.error(error);
+        });
     },
     passToIndex(esData) {
       console.log(esData);
@@ -916,15 +805,15 @@ export default {
         })
         .catch(error => {
           console.error(error);
-        })
+        });
     }
   },
   created() {
-    this.getSkos("educationalRole");
-    this.getSkos("alignmentType");
-    this.getSkos("educationalUse");
-    this.getSkos("learningResourceType");
-    this.getSkos("interactivityType");
+    this.getSkos('educationalRole');
+    this.getSkos('alignmentType');
+    this.getSkos('educationalUse');
+    this.getSkos('learningResourceType');
+    this.getSkos('interactivityType');
     this.getCompetenceFrameworks();
   }
 };

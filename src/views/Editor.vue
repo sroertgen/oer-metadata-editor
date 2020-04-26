@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="editor">
     <app-editor></app-editor>
   </div>
 </template>
@@ -9,7 +9,7 @@
 import AppEditor from '@/components/AppEditor.vue';
 
 export default {
-  name: 'Home',
+  name: 'Editor',
   components: {
     AppEditor
   }

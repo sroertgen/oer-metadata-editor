@@ -1,0 +1,33 @@
+[{
+        "value": "flashing",
+        "text": "flashing"
+    },
+    {
+        "value": "noFlashingHazard",
+        "text": "noFlashingHazard"
+    },
+    {
+        "value": "motionSimulation",
+        "text": "motionSimulation"
+    },
+    {
+        "value": "noMotionSimulationHazard",
+        "text": "noMotionSimulationHazard"
+    },
+    {
+        "value": "sound",
+        "text": "sound"
+    },
+    {
+        "value": "noSoundHazard",
+        "text": "noSoundHazard"
+    },
+    {
+        "value": "unknown",
+        "text": "unknown"
+    },
+    {
+        "value": "none",
+        "text": "none"
+    }
+]
